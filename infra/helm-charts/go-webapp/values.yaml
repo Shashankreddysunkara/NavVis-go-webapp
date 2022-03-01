@@ -1,0 +1,14 @@
+resources:
+  default:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits:
+      cpu: 2500m
+      memory: 5760Mi
+global:
+  autoscaling:
+    minReplicas: 1
+  dockerParameter:
+    dockerPath: dock101/go-webapp-sample
+    dockerVersion: latest
