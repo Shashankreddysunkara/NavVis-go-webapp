@@ -34,6 +34,7 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+              protocol: TCP
           resources:
             {{ (index .Values.resources "default") | toJson }}
           env:
