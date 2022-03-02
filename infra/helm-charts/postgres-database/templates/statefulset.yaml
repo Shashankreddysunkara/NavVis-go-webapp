@@ -36,5 +36,5 @@ spec:
         - name: localvolume
           persistentVolumeClaim:
             claimName: postgres-pvc
-        nodeSelector:         
-          beta.kubernetes.io/arch: amd64
+      nodeSelector:         
+        beta.kubernetes.io/arch: amd64
