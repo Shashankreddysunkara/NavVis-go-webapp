@@ -3,12 +3,16 @@ kind: StatefulSet
 metadata:
   name: 
     go-webapp-postgres
+  labels:
+    pv: pv-ghost
 spec:
   serviceName: go-webapp-postgres
   replicas: 1
   selector:
     matchLabels:
       app: go-webapp-postgres
+      name:  postgres-pv
+      name: postgres-pvc
   template:
     metadata:
       labels:
@@ -32,3 +36,6 @@ spec:
         - name: localvolume
           persistentVolumeClaim:
             claimName: postgres-pvc
+        nodeSelector:
+          statefulset.kubernetes.io/pod-name: go-webapp-postgres-0
+          beta.kubernetes.io/arch: amd64

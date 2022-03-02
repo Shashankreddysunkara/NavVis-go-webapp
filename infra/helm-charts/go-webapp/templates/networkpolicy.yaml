@@ -6,8 +6,10 @@ spec:
   podSelector:
     matchLabels:
       app: go-webapp
+      k8s-app: ingress-nginx
   ingress:
   - from:
     - podSelector:
         matchLabels: #mutable fields
           app.kubernetes.io/name: ingress-nginx
+          k8s-app: ingress-nginx

@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-webapp-redis
+  labels:
+    app: go-webapp-redis
 spec:
   replicas: 1
   selector:
@@ -17,3 +19,4 @@ spec:
         image: redis:alpine
         ports:
         - containerPort: 6379
+          name: go-webapp-redis

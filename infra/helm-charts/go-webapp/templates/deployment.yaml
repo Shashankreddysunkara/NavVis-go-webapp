@@ -4,6 +4,8 @@ metadata:
   name: go-webapp-deployment
   labels:
     app: go-webapp
+    k8s-app: ingress-nginx
+    name: go-webapp-deployment
 spec:
   replicas: {{ .Values.global.autoscaling.minReplicas }}
   selector:
@@ -27,6 +29,8 @@ spec:
         - name: go-webapp
           image: {{ .Values.global.dockerParameter.dockerPath }}:{{ .Values.global.dockerParameter.dockerVersion }}
           imagePullPolicy: Always
+          securityContext:
+            privileged: True
           ports:
             - name: http
               containerPort: 8080

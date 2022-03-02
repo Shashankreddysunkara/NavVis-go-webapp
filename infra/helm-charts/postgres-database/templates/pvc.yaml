@@ -5,6 +5,7 @@ metadata:
   labels:
     type: local
     pv:  postgres-pv
+    name: postgres-pvc
 spec:
   accessModes:
     - ReadWriteOnce
