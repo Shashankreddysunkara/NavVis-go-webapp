@@ -11,12 +11,12 @@ spec:
   selector:
     matchLabels:
       app: go-webapp-postgres
-      name:  postgres-pv
-      name: postgres-pvc
   template:
     metadata:
       labels:
         app: go-webapp-postgres
+        name: postgres-pv
+        name: postgres-pvc
     spec:
       containers:
        - name: go-webapp-postgres
