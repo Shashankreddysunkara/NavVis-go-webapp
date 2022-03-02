@@ -2,6 +2,9 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgres-pvc
+  labels:
+    type: local
+    pv:  postgres-pv
 spec:
   accessModes:
     - ReadWriteOnce
@@ -9,3 +12,6 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: local-storage
+  selector:
+    matchLabels:
+      name: postgres-pv
