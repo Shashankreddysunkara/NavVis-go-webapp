@@ -5,7 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: k8s-app
+      app: go-webapp
   ingress:
   - from:
     - podSelector:

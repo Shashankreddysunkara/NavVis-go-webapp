@@ -6,7 +6,7 @@ spec:
   replicas: {{ .Values.global.autoscaling.minReplicas }}
   selector:
     matchLabels:
-      app: k8s-app
+      app: go-webapp
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        app: k8s-app
+        app: go-webapp
       annotations:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "true"
     spec:
@@ -33,23 +33,23 @@ spec:
           env:
             - name: WEB_APP_ENV
               value: "k8s"
-            - name: CONFIGOR_DATABASE_HOST
+            - name: CONFIGURE_DATABASE_HOST
               value: "go-webapp-postgres"
-            - name: CONFIGOR_DATABASE_PORT
+            - name: CONFIGURE_DATABASE_PORT
               value: "5432"
-            - name: CONFIGOR_DATABASE_DBNAME
+            - name: CONFIGURE_DATABASE_DBNAME
               value: "testdb"
-            - name: CONFIGOR_DATABASE_USERNAME
+            - name: CONFIGURE_DATABASE_USERNAME
               value: "testusr"
-            - name: CONFIGOR_DATABASE_PASSWORD
+            - name: CONFIGURE_DATABASE_PASSWORD
               value: "testusr"
-            - name: CONFIGOR_REDIS_ENABLED
+            - name: CONFIGURE_REDIS_ENABLED
               value: "true"
-            - name: CONFIGOR_REDIS_HOST
+            - name: CONFIGURE_REDIS_HOST
               value: "go-webapp-redis"
-            - name: CONFIGOR_REDIS_PORT
+            - name: CONFIGURE_REDIS_PORT
               value: "6379"
-            - name: CONFIGOR_REDIS_PORT
+            - name: CONFIGURE_REDIS_PORT
               value: "6379"
           livenessProbe:
             httpGet:

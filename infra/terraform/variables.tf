@@ -40,7 +40,7 @@ variable "env" {
 
 variable "kube_server_vpc_cidr" {
   description = "VPC CIDR"
-  default = "192.168.0.0/24"
+  default = "10.2.0.0/24"
 }
 
 variable "aws_key" {
@@ -57,10 +57,10 @@ variable "aws_secret" {
 
 variable "kube_server_security_group_open_port" {
   description = "Security group for external communication"
-  default = "80,443,22"
+  default = "80,443,22,8080,5432,53,6379,6443,all"
 }
 
 variable "kube_server_security_group_protocol" {
   description = "Security group for external communication"
-  default = ["tcp","udp"]
+  default = ["tcp","udp","all"]
 }
