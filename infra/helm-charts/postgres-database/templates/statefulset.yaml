@@ -16,7 +16,6 @@ spec:
       labels:
         app: go-webapp-postgres
         name: postgres-pv
-        name: postgres-pvc
     spec:
       containers:
        - name: go-webapp-postgres
