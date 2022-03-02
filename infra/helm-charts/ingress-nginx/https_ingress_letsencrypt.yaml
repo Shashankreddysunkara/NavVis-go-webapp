@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - test.navvis.com
+    - 54.215.219.75
     secretName: app-secret
   rules:
-    - host: test.navvis.com
+    - host: 54.215.219.75
       http:
         paths:
           - path: /release_name
