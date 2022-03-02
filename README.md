@@ -3,17 +3,24 @@
 [![license](https://img.shields.io/github/license/Shashankreddysunkara/NavVis-go-webapp?style=for-the-badge)](https://github.com/Shashankreddysunkara/NavVis-go-webapp/blob/main/LICENSE)
 [![report](https://goreportcard.com/badge/github.com/Shashankreddysunkara/NavVis-go-webapp?style=for-the-badge)](https://goreportcard.com/report/github.com/Shashankreddysunkara/NavVis-go-webapp)
 [![workflow](https://img.shields.io/github/workflow/status/Shashankreddysunkara/NavVis-go-webapp/check?label=check&style=for-the-badge&logo=github)](https://github.com/Shashankreddysunkara/NavVis-go-webapp/actions?query=workflow%3Acheck)
-[![release](https://img.shields.io/github/release/Shashankreddysunkara/NavVis-go-webapp?style=for-the-badge&logo=github)](https://github.com/Shashankreddysunkara/NavVis-go-webapp/releases)
+
 
 ## Preface
 
-Containerized golang app 
+### Containerized golang app 
 
-As per the task 2, I have created the following items:
+As per the task-2, I have created the following items:
 1. Dockerfile: To build the container image for this app
-2. Helm chart to deploy the golang app (without the webserver) 
-3. Deploy the Let's Encrypt ssl with subdomain.
-4. Added the terraform code to deploy the standalone k8s(v19.2.0) in EC2 instance with single master.
+2. Helm chart to deploy the golang app (without the webserver)
+3. Exposed the app to public with "test.navvis.com/release_name" url
+4. Mounted a volume to /data
+5. Gave the app permissions to know what other pods are running in the same
+   namespace as it is deployed on.
+6. Only allowed incoming traffic from pods with "k8s-app=ingress-nginx" label.
+7. Create proper Kubernetes manifests for "zaplogger.k8s.yml" and "application.
+   k8s.yml".
+8. Deployed the Let's Encrypt ssl with subdomain.
+9. Added the terraform code to deploy the standalone k8s(v19.2.0) in EC2 instance with single master.
 
 ## Starting Without Web Server locally
 1. Starting this web application by the following command.
@@ -24,7 +31,12 @@ As per the task 2, I have created the following items:
     ```
     http server started on [::]:8080
     ```
+
+    <img width=650px height=200px src="./NavVis%20task2%20result%201%20-%20without%20webserver.png" alt="Project Plan"></a> 
+
 3. Access [http://localhost:8080](http://localhost:8080) in your browser.
+   
+   <img width=650px height=30px src="./NavVis%20task2%20result%202%20-%20without%20webserver.png" alt="Project Plan"></a>
 4. Login with the following username and password.
     - username : ``test``
     - password : ``test``
