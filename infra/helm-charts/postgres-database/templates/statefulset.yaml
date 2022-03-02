@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: 
-    go-webapp-postgres
+    k8s-app-postgres
   labels:
     pv: pv-ghost
 spec:
-  serviceName: go-webapp-postgres
+  serviceName: k8s-app-postgres
   replicas: 1
   selector:
     matchLabels:
-      app: go-webapp-postgres
+      app: k8s-app-postgres
   template:
     metadata:
       labels:
-        app: go-webapp-postgres
+        app: k8s-app-postgres
         name: postgres-pv
     spec:
       containers:
-       - name: go-webapp-postgres
+       - name: k8s-app-postgres
          image: dock101/postgres-sample:latest
          imagePullPolicy: IfNotPresent
          ports:

@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: go-webapp-autoscaler
+  name: k8s-app-autoscaler
 
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: go-webapp-deployment
+    name: k8s-app-deployment
   minReplicas: 1
   maxReplicas: 10
   metrics:

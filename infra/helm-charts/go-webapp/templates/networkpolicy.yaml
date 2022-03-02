@@ -1,15 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name:  go-webapp-access-nginx
+  name:  k8s-app-access-nginx
 spec:
   podSelector:
     matchLabels:
-      app: go-webapp
       k8s-app: ingress-nginx
   ingress:
   - from:
     - podSelector:
         matchLabels: #mutable fields
-          app.kubernetes.io/name: ingress-nginx
           k8s-app: ingress-nginx

@@ -1,6 +1,6 @@
 database:
   dialect: postgres
-  host: go-webapp-postgres
+  host: k8s-app-postgres
   port: 5432
   dbname: testdb
   username: testusr
@@ -10,7 +10,7 @@ database:
 redis:
   enabled: true
   connection_pool_size: 10
-  host: go-webapp-redis
+  host: k8s-app-redis
   port: 6379
 
 extension:
@@ -33,5 +33,6 @@ security:
     - /api/health$
   user_path:
     - /api/.*
+    - /release_name/.*
   admin_path:
     - /api/.*

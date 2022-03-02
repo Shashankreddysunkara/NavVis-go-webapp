@@ -8,16 +8,17 @@ metadata:
 spec:
   tls:
   - hosts:
-    - 54.215.219.75
+    - test.navvis.com
     secretName: app-secret
   rules:
-    - host: 54.215.219.75
+    - host: test.navvis.com
       http:
         paths:
           - path: /release_name
             pathType: Prefix
             backend:
               service:
-                name: go-webapp
+                name: k8s-app
                 port:
                   number: 8080
+  

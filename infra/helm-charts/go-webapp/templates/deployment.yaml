@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-webapp-deployment
+  name: k8s-app-deployment
   labels:
-    app: go-webapp
+    app: k8s-app
     k8s-app: ingress-nginx
-    name: go-webapp-deployment
+    name: k8s-app-deployment
 spec:
   replicas: {{ .Values.global.autoscaling.minReplicas }}
   selector:
     matchLabels:
-      app: go-webapp
+      k8s-app: ingress-nginx
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -20,13 +20,13 @@ spec:
   template:
     metadata:
       labels:
-        app: go-webapp
+        k8s-app: ingress-nginx
       annotations:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "true"
     spec:
       terminationGracePeriodSeconds: 120
       containers:
-        - name: go-webapp
+        - name: k8s-app
           image: {{ .Values.global.dockerParameter.dockerPath }}:{{ .Values.global.dockerParameter.dockerVersion }}
           imagePullPolicy: Always
           securityContext:
