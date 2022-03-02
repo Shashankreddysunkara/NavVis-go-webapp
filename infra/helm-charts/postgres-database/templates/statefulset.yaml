@@ -36,6 +36,5 @@ spec:
         - name: localvolume
           persistentVolumeClaim:
             claimName: postgres-pvc
-        nodeSelector:
-          statefulset.kubernetes.io/pod-name: go-webapp-postgres-0
+        nodeSelector:         
           beta.kubernetes.io/arch: amd64
