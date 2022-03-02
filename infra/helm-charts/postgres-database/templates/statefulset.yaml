@@ -36,4 +36,4 @@ spec:
           persistentVolumeClaim:
             claimName: postgres-pvc
       nodeSelector:         
-        beta.kubernetes.io/arch: amd64
+        kubernetes.io/hostname: ip-10-2-0-82
