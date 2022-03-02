@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-webapp-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-webapp-redis
+  template:
+    metadata:
+      labels:
+        app: go-webapp-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:alpine
+        ports:
+        - containerPort: 6379

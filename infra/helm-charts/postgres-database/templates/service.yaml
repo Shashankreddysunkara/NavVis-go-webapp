@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-webapp-postgres
+spec:
+  selector:
+    app: go-webapp-postgres
+  type: ClusterIP
+  clusterIP: None
+  ports:
+   - name: "db-port"
+     protocol: "TCP"
+     port: 5432
+     targetPort: 5432

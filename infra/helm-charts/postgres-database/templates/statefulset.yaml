@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: 
+    go-webapp-postgres
+spec:
+  serviceName: go-webapp-postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-webapp-postgres
+  template:
+    metadata:
+      labels:
+        app: go-webapp-postgres
+    spec:
+      containers:
+       - name: go-webapp-postgres
+         image: dock101/postgres-sample:latest
+         imagePullPolicy: IfNotPresent
+         ports:
+          - containerPort: 5432
+         env:
+          - name: POSTGRES_DB
+            value: "db"  
+          - name: POSTGRES_HOST_AUTH_METHOD
+            value: "trust"                      
+         volumeMounts: 
+           - name: localvolume
+             mountPath: /usr/local/pgsql/data
+      volumes:
+        - name: localvolume
+          persistentVolumeClaim:
+            claimName: postgres-pvc
