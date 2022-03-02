@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: go-webapp
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: http
       protocol: TCP
