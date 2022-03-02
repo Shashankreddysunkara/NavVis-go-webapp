@@ -22,7 +22,6 @@ spec:
               operator: In
               values:
                 - kube
-                - ip-10-2-0-87
             - key: beta.kubernetes.io/arch
               operator: In
               values:
