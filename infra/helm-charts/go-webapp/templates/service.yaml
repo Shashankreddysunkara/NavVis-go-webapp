@@ -6,10 +6,8 @@ metadata:
 spec:
   selector:
     app: go-webapp
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: http
       protocol: TCP
       port: 8080
-      nodePort: 30000
-
