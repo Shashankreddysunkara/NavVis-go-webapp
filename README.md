@@ -15,6 +15,29 @@ As per the task 2, I have created the following items:
 3. Deploy the Let's Encrypt ssl with subdomain.
 4. Added the terraform code to deploy the standalone k8s(v19.2.0) in EC2 instance with single master.
 
+## Starting Without Web Server locally
+1. Starting this web application by the following command.
+    ```bash
+    go run main.go
+    ```
+2. When startup is complete, the console shows the following message:
+    ```
+    http server started on [::]:8080
+    ```
+3. Access [http://localhost:8080](http://localhost:8080) in your browser.
+4. Login with the following username and password.
+    - username : ``test``
+    - password : ``test``
+
+### Dockerfile and steps to build postgres
+Below are the steps to build docker image and push to docker hub
+please replace the tagname w.r.t to your docker image
+
+```
+docker build -f DockerfilePostgres . --tag=dock101/postgres-sample:latest
+docker push dock101/postgres-sample:latest
+```
+
 ### Dockerfile and steps to build golang app
 
 Steps to build docker image and push to docker hub
@@ -47,7 +70,14 @@ Pre-requisite => Make sure kubectl is installed and configured the kube config o
 
 Alternatively, you can SSH into the EC2 instance which got created with the above steps and then perform the following steps:
 
-1. Install the go-webapp helm chart using the below command
+1. Install both postgres and redis
+```
+cd infra/helm-charts
+helm install postgres-database ./postgres-database
+helm install redis ./redis
+```
+
+2. Install the go-webapp helm chart using the below command
 
 ```
 cd infra/helm-charts
