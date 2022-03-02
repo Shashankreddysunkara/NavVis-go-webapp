@@ -57,10 +57,10 @@ variable "aws_secret" {
 
 variable "kube_server_security_group_open_port" {
   description = "Security group for external communication"
-  default = "80,443,22,8080,5432,53,6379,6443,all"
+  default = "80,443,22,8080,5432,53,6379,6443"
 }
 
 variable "kube_server_security_group_protocol" {
   description = "Security group for external communication"
-  default = ["tcp","udp","all"]
+  default = ["tcp","udp"]
 }
