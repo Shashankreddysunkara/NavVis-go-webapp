@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   local:
-    path: /data
+    path: /mnt/data
   nodeAffinity:
     required:
       nodeSelectorTerms:
